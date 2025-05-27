@@ -1,0 +1,14 @@
+name: tf-handwriting
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+      - opencv-python
+      - numpy
+      - pandas
+      - matplotlib
+      - tensorflow[and-cuda]
+      - keras
