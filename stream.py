@@ -9,7 +9,7 @@ from keras import backend as K
 # Load model
 @st.cache_resource
 def load_recognition_model():
-    model = load_model('model/model.keras')
+    model = load_model('model/model50v2.keras')
     return model
 
 model = load_recognition_model()
