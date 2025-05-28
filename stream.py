@@ -1,14 +1,12 @@
 import streamlit as st
+st.set_page_config(page_title="Handwriting Recognition", page_icon="📝")
+
 import numpy as np
 import tensorflow as tf
 import cv2
 from tensorflow.keras.models import load_model
 from tensorflow.keras import backend as K
 
-# HARUS di atas sebelum perintah Streamlit lainnya
-st.set_page_config(page_title="Handwriting Recognition", page_icon="📝")
-
-# Load model
 @st.cache_resource
 def load_handwriting_model():
     return load_model("model50v2.keras")
@@ -42,10 +40,8 @@ def preprocess_image(image):
     final_img = final_img.reshape(1, 256, 64, 1)
     return final_img
 
-# Streamlit UI
+# UI
 st.title("📜 Handwriting Recognition (IAM Dataset)")
-st.write("Upload gambar tulisan tangan dan model akan mengenali teksnya.")
-
 uploaded_file = st.file_uploader("Upload Gambar", type=["png", "jpg", "jpeg"])
 
 if uploaded_file is not None:
