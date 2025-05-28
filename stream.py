@@ -5,6 +5,9 @@ import cv2
 from tensorflow.keras.models import load_model
 from tensorflow.keras import backend as K
 
+# HARUS di atas sebelum perintah Streamlit lainnya
+st.set_page_config(page_title="Handwriting Recognition", page_icon="📝")
+
 # Load model
 @st.cache_resource
 def load_handwriting_model():
@@ -12,13 +15,12 @@ def load_handwriting_model():
 
 model = load_handwriting_model()
 
-# Define alphabet and helper functions
 alphabets = u"ABCDEFGHIJKLMNOPQRSTUVWXYZ-' "
 
 def num_to_label(num):
     ret = ""
     for ch in num:
-        if ch == -1:  # CTC Blank
+        if ch == -1:
             break
         else:
             ret += alphabets[ch]
